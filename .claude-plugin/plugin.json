@@ -1,0 +1,12 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "reverse-engineering",
+  "description": "Inspect and document the architecture, data flow, APIs, and internal mechanics of authorized websites, mobile applications (APKs), desktop binaries, and web services.",
+  "version": "1.0.0",
+  "author": {
+    "name": "palanshujayprakash"
+  },
+  "skills": [
+    "./"
+  ]
+}
