@@ -2,7 +2,12 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "reverse-engineering-marketplace",
   "owner": {
-    "name": "palanshujayprakash"
+    "name": "palanshujayprakash",
+    "url": "https://github.com/palanshujayprakash"
+  },
+  "metadata": {
+    "description": "Marketplace catalog for reverse engineering skills and plugins",
+    "version": "1.0.0"
   },
   "plugins": [
     {
@@ -10,7 +15,11 @@
       "description": "Inspect and document the architecture, data flow, APIs, and internal mechanics of authorized websites, mobile applications (APKs), desktop binaries, and web services.",
       "version": "1.0.0",
       "source": "./",
-      "category": "development"
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/reverse-engineering"
+      ]
     }
   ]
 }

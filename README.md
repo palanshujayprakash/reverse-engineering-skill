@@ -11,14 +11,26 @@ A modular, cross-platform AI agent skill designed to help AI agents systematical
 ## Directory Structure
 
 ```text
-reverse-engineering/
-├── SKILL.md                  # Main skill definition & agent execution rules
+reverse-engineering-skill/
+├── .claude-plugin/
+│   ├── marketplace.json      # Claude marketplace catalog manifest
+│   └── plugin.json           # Plugin definition and metadata
+├── skills/
+│   └── reverse-engineering/  # Packaged agent skill directory
+│       ├── SKILL.md          # Skill definition & agent execution rules
+│       └── references/       # Target-specific analysis guides
+│           ├── android.md
+│           ├── api-traffic.md
+│           ├── desktop-binary.md
+│           └── web.md
+├── references/               # Root references for direct repository use
+│   ├── android.md            # Android APK disassembly & manifest analysis
+│   ├── api-traffic.md        # Proxy setup & API schema reconstruction
+│   ├── desktop-binary.md     # Static binary identification & disassembly
+│   └── web.md                # Web applications, bundles & DevTools guide
+├── LICENSE                   # MIT License
 ├── README.md                 # Project documentation & integration guide
-└── references/
-    ├── web.md                # Web applications, bundles & DevTools guide
-    ├── android.md            # Android APK disassembly & manifest analysis
-    ├── desktop-binary.md     # Static binary identification & disassembly
-    └── api-traffic.md        # Proxy setup & API schema reconstruction
+└── SKILL.md                  # Main skill definition & agent execution rules
 ```
 
 ---
@@ -48,50 +60,40 @@ This skill enforces strict security and legal boundaries:
 ## Agent Integration Guide
 
 ### 1. Claude Code / Cowork
-Copy the `reverse-engineering` directory into your project's skills folder:
+
+**Option A — Via Plugin Marketplace:**
 ```bash
-mkdir -p .claude/skills/
-cp -r reverse-engineering .claude/skills/
+/plugin marketplace add palanshujayprakash/reverse-engineering-skill
+/plugin install reverse-engineering@reverse-engineering-marketplace
 ```
 
-### 2. Cursor / Windsurf
+**Option B — Manual Skill Copy:**
+```bash
+mkdir -p .claude/skills/
+cp -r skills/reverse-engineering .claude/skills/
+```
+
+### 2. Antigravity / Agent Skills Standard / Codex
+Copy the skill into the global or project `.agents/skills` directory:
+```bash
+mkdir -p .agents/skills/
+cp -r skills/reverse-engineering .agents/skills/
+```
+
+### 3. Cursor / Windsurf
 Add the contents of `SKILL.md` to your project rules:
 ```bash
 mkdir -p .cursor/rules/
 cp SKILL.md .cursor/rules/reverse-engineering.mdc
 ```
 
-### 3. Gemini CLI / Antigravity / Custom LLM Agents
+### 4. Gemini CLI / Custom LLM Agents
 Include `SKILL.md` directly in the system prompt or agent instructions:
 ```python
 with open("SKILL.md") as f:
     skill_instructions = f.read()
 
 agent_prompt = f"You have access to the following skill:\n{skill_instructions}"
-```
-
----
-
-## Quickstart for Local Setup & Push
-
-To push this repository to GitHub under [palanshujayprakash](https://github.com/palanshujayprakash):
-
-```bash
-# 1. Initialize local repository
-git init -b main
-
-# 2. Add files and make first commit
-git add .
-git commit -m "feat: initial commit of reverse engineering skill"
-
-# 3. Create repository and push using GitHub CLI
-gh repo create reverse-engineering-skill --public --source=. --remote=origin --push
-```
-
-Or using standard Git commands after creating `reverse-engineering-skill` on GitHub:
-```bash
-git remote add origin https://github.com/palanshujayprakash/reverse-engineering-skill.git
-git push -u origin main
 ```
 
 ---
