@@ -1,0 +1,6 @@
+{
+  "name": "reverse-engineering",
+  "version": "1.0.0",
+  "description": "Inspect and document the architecture, data flow, APIs, and internal mechanics of authorized websites, mobile applications (APKs), desktop binaries, and web services.",
+  "contextFileName": "AGENTS.md"
+}

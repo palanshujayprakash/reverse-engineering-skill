@@ -8,29 +8,58 @@ A modular, cross-platform AI agent skill designed to help AI agents systematical
 
 ---
 
+## Universal Agent Support
+
+This repository connects seamlessly across all major AI agent environments:
+
+| Agent / Environment | Configuration / Manifest | Auto-Discovery Path |
+| :--- | :--- | :--- |
+| **Claude Code & Desktop** | `.claude-plugin/plugin.json` | `skills/reverse-engineering/` or `/plugin` marketplace |
+| **Universal Agents** | `AGENTS.md` | Standard root `AGENTS.md` context file |
+| **Google Antigravity & Gemini CLI** | `gemini-extension.json`, `.antigravity-plugin/` | Global `.agents/skills/` or extension manifest |
+| **Cursor AI** | `.cursor/rules/reverse-engineering.mdc` | Project rule automatically loaded by Cursor |
+| **Windsurf / Cascade** | `.windsurf/rules/reverse-engineering.md` | Project rule automatically loaded by Cascade |
+| **Cline & Roo Code** | `.clinerules/reverse-engineering.md` | Agent system instructions loaded per session |
+| **GitHub Copilot** | `.github/copilot-instructions.md` | Copilot custom instructions for workspace |
+| **OpenAI Codex** | `.codex-plugin/plugin.json` | Agent plugin skill discovery |
+| **Cognition Devin** | `.devin-plugin/plugin.json` | Devin repository integration manifest |
+| **Agent Skills Standard** | `.agents/skills/reverse-engineering/` | Cross-platform open agent skills standard |
+
+---
+
 ## Directory Structure
 
 ```text
 reverse-engineering-skill/
+├── .agents/
+│   └── skills/reverse-engineering/ # Open Agent Skills specification layout
+├── .antigravity-plugin/
+│   └── plugin.json                 # Google Antigravity extension manifest
 ├── .claude-plugin/
-│   ├── marketplace.json      # Claude marketplace catalog manifest
-│   └── plugin.json           # Plugin definition and metadata
+│   ├── marketplace.json            # Claude marketplace catalog manifest
+│   └── plugin.json                 # Claude Code plugin definition
+├── .clinerules/
+│   └── reverse-engineering.md      # Cline / Roo Code agent instructions
+├── .codex-plugin/
+│   └── plugin.json                 # OpenAI Codex plugin manifest
+├── .cursor/
+│   └── rules/reverse-engineering.mdc # Cursor IDE agent rules
+├── .devin-plugin/
+│   └── plugin.json                 # Devin agent manifest
+├── .github/
+│   └── copilot-instructions.md     # GitHub Copilot workspace instructions
+├── .windsurf/
+│   └── rules/reverse-engineering.md # Windsurf / Cascade IDE rules
 ├── skills/
-│   └── reverse-engineering/  # Packaged agent skill directory
-│       ├── SKILL.md          # Skill definition & agent execution rules
-│       └── references/       # Target-specific analysis guides
-│           ├── android.md
-│           ├── api-traffic.md
-│           ├── desktop-binary.md
-│           └── web.md
-├── references/               # Root references for direct repository use
-│   ├── android.md            # Android APK disassembly & manifest analysis
-│   ├── api-traffic.md        # Proxy setup & API schema reconstruction
-│   ├── desktop-binary.md     # Static binary identification & disassembly
-│   └── web.md                # Web applications, bundles & DevTools guide
-├── LICENSE                   # MIT License
-├── README.md                 # Project documentation & integration guide
-└── SKILL.md                  # Main skill definition & agent execution rules
+│   └── reverse-engineering/        # Main packaged skill folder
+│       ├── SKILL.md                # Agent execution instructions
+│       └── references/             # Target-specific analysis guides
+├── references/                     # Root references
+├── AGENTS.md                       # Universal AI Agent instructions
+├── gemini-extension.json           # Gemini CLI extension configuration
+├── LICENSE                         # MIT License
+├── README.md                       # Documentation & integration guide
+└── SKILL.md                        # Root skill definition
 ```
 
 ---
@@ -67,34 +96,39 @@ This skill enforces strict security and legal boundaries:
 /plugin install reverse-engineering@reverse-engineering-marketplace
 ```
 
-**Option B — Manual Skill Copy:**
+**Option B — Global / Project Skill:**
 ```bash
+# Global install (available across all projects)
+mkdir -p ~/.claude/skills/
+cp -r skills/reverse-engineering ~/.claude/skills/
+
+# Project install
 mkdir -p .claude/skills/
 cp -r skills/reverse-engineering .claude/skills/
 ```
 
 ### 2. Antigravity / Agent Skills Standard / Codex
-Copy the skill into the global or project `.agents/skills` directory:
+Install globally into `~/.agents/skills`:
 ```bash
-mkdir -p .agents/skills/
-cp -r skills/reverse-engineering .agents/skills/
+mkdir -p ~/.agents/skills/
+cp -r skills/reverse-engineering ~/.agents/skills/
 ```
 
-### 3. Cursor / Windsurf
-Add the contents of `SKILL.md` to your project rules:
+### 3. Cursor
+The rule is pre-configured in `.cursor/rules/reverse-engineering.mdc`. In any project, copy the rule:
 ```bash
 mkdir -p .cursor/rules/
-cp SKILL.md .cursor/rules/reverse-engineering.mdc
+cp .cursor/rules/reverse-engineering.mdc .cursor/rules/
 ```
 
-### 4. Gemini CLI / Custom LLM Agents
-Include `SKILL.md` directly in the system prompt or agent instructions:
-```python
-with open("SKILL.md") as f:
-    skill_instructions = f.read()
+### 4. Windsurf / Cascade
+The rule is pre-configured in `.windsurf/rules/reverse-engineering.md`.
 
-agent_prompt = f"You have access to the following skill:\n{skill_instructions}"
-```
+### 5. Cline / Roo Code
+The instructions are pre-configured in `.clinerules/reverse-engineering.md`.
+
+### 6. GitHub Copilot
+Workspace instructions are pre-configured in `.github/copilot-instructions.md`.
 
 ---
 

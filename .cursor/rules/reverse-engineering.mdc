@@ -1,0 +1,17 @@
+---
+description: Inspect and document the architecture, data flow, APIs, and internal mechanics of authorized applications.
+globs: *
+alwaysApply: false
+---
+
+# Reverse Engineering Rule
+
+When the user asks to analyze, deconstruct, inspect, or document how a website, mobile app (APK), desktop binary, or API service works:
+
+1. **Verify Authorization**: Confirm the target is owned by the user, open-source, or part of an authorized test/audit.
+2. **Deconstruct Systematically**:
+   - Web: Inspect bundles, source maps, Fetch/XHR calls, routing tables, and client storage.
+   - Android: Inspect manifest permissions, exported components, intent filters, and decompiled DEX.
+   - Desktop Binary: Check architecture, headers, imported/exported symbols, dependencies, and embedded strings.
+   - APIs & Traffic: Map routes, HTTP methods, headers, auth mechanisms, and JSON schemas.
+3. **Document Clearly**: Synthesize findings into architecture diagrams, data flow traces, endpoint tables, and defensive security observations.

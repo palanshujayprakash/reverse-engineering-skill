@@ -1,0 +1,21 @@
+{
+  "name": "reverse-engineering",
+  "displayName": "Reverse Engineering",
+  "version": "1.0.0",
+  "description": "Inspect and document the architecture, data flow, APIs, and internal mechanics of authorized websites, mobile applications (APKs), desktop binaries, and web services.",
+  "category": "Developer Tools",
+  "keywords": [
+    "reverse-engineering",
+    "architecture-mapping",
+    "api-inspection",
+    "decompilation",
+    "security-analysis"
+  ],
+  "author": {
+    "name": "palanshujayprakash",
+    "url": "https://github.com/palanshujayprakash"
+  },
+  "homepage": "https://github.com/palanshujayprakash/reverse-engineering-skill",
+  "repository": "https://github.com/palanshujayprakash/reverse-engineering-skill",
+  "license": "MIT"
+}
